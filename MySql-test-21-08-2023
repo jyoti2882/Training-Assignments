@@ -1,0 +1,66 @@
+mysql> select * from Department1 d inner join employee1 e on d.deptno = e.deptno inner join Address a on  d.address_id = a.address_id;
++--------+-----------+--------------+------------+--------+----------+---------+--------+------------+-----------+------------+
+| deptno | dept_name | dept_manager | address_id | emp_no | emp_name | emp_sal | deptno | address_id | city      | state      |
++--------+-----------+--------------+------------+--------+----------+---------+--------+------------+-----------+------------+
+|    101 | Sales     | Arun         |         11 |      1 | Ram      |  123400 |    101 |         11 | Kanpur    | UP         |
+|    102 | IT        | Ravi         |         12 |      2 | Shyam    |  345600 |    102 |         12 | Lucknow   | UP         |
+|    103 | Marketing | Anil         |         13 |      3 | Gopal    |  120000 |    103 |         13 | Chennai   | Tamil Nadu |
+|    104 | HR        | Ajay         |         14 |      4 | Raj      |  150000 |    104 |         14 | Hyderabad | Telangana  |
++--------+-----------+--------------+------------+--------+----------+---------+--------+------------+-----------+------------+
+4 rows in set (0.00 sec)
+
+________________________________________________________________________
+
+
+
+mysql> create table bankaccount(acc_no int, acc_opened_date date, status text, balance double,primary key(acc_no));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc bankaccount;
++-----------------+--------+------+-----+---------+-------+
+| Field           | Type   | Null | Key | Default | Extra |
++-----------------+--------+------+-----+---------+-------+
+| acc_no          | int    | NO   | PRI | NULL    |       |
+| acc_opened_date | date   | YES  |     | NULL    |       |
+| status          | text   | YES  |     | NULL    |       |
+| balance         | double | YES  |     | NULL    |       |
++-----------------+--------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create table transaction(acc_no int,trans_type char(1), trans_date date, trans_amount double, foreign key(acc_no) references bankaccount(acc_no)on delete cascade);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc transaction;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| acc_no       | int     | YES  | MUL | NULL    |       |
+| trans_type   | char(1) | YES  |     | NULL    |       |
+| trans_date   | date    | YES  |     | NULL    |       |
+| trans_amount | double  | YES  |     | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+_______________________________________________________________________
+
+
+
+mysql> Select MAX( manager_name) as manager_name, SUM(emp_sal) as Salary_sum from employeeNew group by department;
++--------------+------------+
+| manager_name | Salary_sum |
++--------------+------------+
+| Arun         |     260000 |
+| Rohit        |  110000000 |
+| Gagan        |      95000 |
++--------------+------------+
+
+
+mysql> select emp_sal from employeeNew  e1 where (select count(*) from employeeNew e2 where e1.emp_sal<=e2.emp_sal)=4;
++---------+
+| emp_sal |
++---------+
+|   50000 |
++---------+
+1 row in set (0.01 sec)
+
