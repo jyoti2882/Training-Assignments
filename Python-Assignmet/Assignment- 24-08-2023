@@ -1,0 +1,54 @@
+class Restraunt:
+    def __init__(self):
+        self.menu_items= {"Tea":40, "Coffee":40, "Idli":70, "Dosa":85, "Biryani":100, "Pizza":250, "Burger":75, "Pav Bhaji":100}
+        self.book_table= {1:None,2:None,3:None,4:None,5:None,6:None,7:None,8:None,9:None,10:None}
+        self.customer_orders= {}
+    
+    def add_item_to_menu(self,item,price):
+        self.menu_items[item]=price
+    
+    def book_tables(self,table_number):
+        if self.book_table[table_number] == None:
+            self.book_table[table_number]= "Booked"
+            print("Congrats!! Table Booked")
+        else:
+            print("Sorry, This Table is Already Booked")
+    
+    def take_customer_order(self, item, table_no):
+        if table_no in self.customer_orders:
+            self.customer_orders[table_no].append(item)
+        else:
+            self.customer_orders[table_no]= [item]
+                
+    def show_menu(self):
+        print("Our Menu")
+        for k,v in self.menu_items.items():
+            print("{} : {}".format(k,v))
+    
+    def show_customer_orders(self):
+        if len(self.customer_orders) ==0 :
+            print("No Orders by You")
+        else:
+            for k,v in self.customer_orders.items():
+                print("Table No.{} Ordered: {}".format(k,v))
+    
+    def show_tables_reservation(self):
+        print("Tables")
+        for k,v in self.book_table.items():
+            if v is None:
+                print("{}: {}".format(k,"Vacant"))
+            else:
+                print("{}: {}".format(k,v))   
+
+
+
+
+r= Restraunt()
+r.show_menu()
+r.show_tables_reservation()
+r.book_tables(3)
+r.show_customer_orders()
+r.take_customer_order("Tea",3)
+r.add_item_to_menu("Veg Sandwitch",65)
+r.book_tables(5)
+r.take_customer_order("Dosa",5)
