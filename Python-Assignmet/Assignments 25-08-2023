@@ -1,0 +1,38 @@
+
+1.
+
+try:
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    result = num1 + num2
+
+    print("Result:", result)
+
+except ValueError as e:
+    print("Error: Input is not a valid number. Please enter numerical values.")
+
+
+2. 
+
+try:
+    num = float(input("Enter a number: "))
+    print("You entered:", num)
+
+except KeyboardInterrupt:
+    print("\nInput canceled by the user.")
+
+except ValueError:
+    print("Error: Please enter a valid number.")
+
+4.
+
+try:
+    a = [11, 22, 33, 44, 55]
+    length = a.length
+
+except AttributeError as e:
+    print("AttributeError:", e)
+    
+a.append(66)
+print("Updated list:", a)
