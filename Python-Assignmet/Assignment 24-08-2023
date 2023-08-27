@@ -1,0 +1,42 @@
+class Application:
+    def __init__(self):
+        self.authors = []
+        self.date = ""
+        self.title = ""
+        self.subject = ""
+        self.toInfo = ""
+
+    def getAuthors(self):
+        return ", ".join(self.authors)
+
+    def addAuthor(self, author):
+        self.authors.append(author)
+
+    def getDate(self):
+        return self.date
+
+    def getTitle(self):
+        return self.title
+
+    def getSubject(self):
+        return self.subject
+
+    def getTo(self):
+        return self.toInfo
+
+app = Application()
+
+app.addAuthor("Author1")
+app.addAuthor("Author2")
+app.addAuthor("Author3")
+
+app.date = "2021-04-12"
+app.title = "Some Book"
+app.subject = "Demo Subject"
+app.toInfo = "Demo Recipient Email"
+
+print("Authors:", app.getAuthors())
+print("Date:", app.getDate())
+print("Title:", app.getTitle())
+print("Subject:", app.getSubject())
+print("To:", app.getTo())
