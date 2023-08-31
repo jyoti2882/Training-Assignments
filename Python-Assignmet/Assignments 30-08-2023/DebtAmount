@@ -1,0 +1,24 @@
+<?php
+
+function calculateDebt($n) {
+    $principal = 100000;
+    $interestRate = 0.05; 
+
+    for ($i = 0; $i < $n; $i++) {
+       
+        $interest = $principal * $interestRate;
+        $principal += $interest;
+        $principal = ceil($principal / 1000) * 1000;
+    }
+
+    return $principal;
+}
+$n = 24;
+
+if ($n >= 0 && $n <= 100) {
+    $debt = calculateDebt($n);
+    echo "Amount of debt: $debt\n";
+} else {
+    echo "Invalid input. n should be between 0 and 100.\n";
+}
+?>
