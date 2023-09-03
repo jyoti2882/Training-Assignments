@@ -1,0 +1,21 @@
+<?php
+class Logger{
+    public static $log_count = 1;
+
+    public static function Log_Message($message){
+        echo $message."<br/> ".Logger::$log_count++."<br/>";
+
+    }
+}
+
+$l1= new Logger();
+$l1->Log_Message("Hello");
+
+$l2= new Logger();
+$l2->Log_Message("Bye");
+
+$l3= new Logger();
+$l3->Log_Message("Sleep");
+
+echo "class".Logger::$log_count;
+?>
