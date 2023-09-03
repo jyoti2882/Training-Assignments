@@ -1,0 +1,26 @@
+<?php
+class Person{
+    public $name;
+    function __construct($name){
+        $this->name = $name;
+    }
+
+}
+class Employee extends Person{
+
+    public $salary, $position;
+    function __construct($name,$sal,$pos){
+        parent::__construct($name);
+        $this->salary= $sal;
+        $this->position= $pos;
+    }
+
+    function display(){
+        echo "Employee's Salary is: ".$this->salary." and Postion is:".$this->position;
+    }
+}
+
+$emp1= new Employee("Sam",110000,"Developer");
+$emp1->display();
+
+?>
