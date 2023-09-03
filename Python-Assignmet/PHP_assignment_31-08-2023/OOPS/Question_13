@@ -8,14 +8,7 @@ class Logger{
     }
 }
 
-$l1= new Logger();
-$l1->Log_Message("Hello");
-
-$l2= new Logger();
-$l2->Log_Message("Bye");
-
-$l3= new Logger();
-$l3->Log_Message("Sleep");
-
-echo "class".Logger::$log_count;
+Logger::Log_Message("Hello");
+Logger::Log_Message("Bye");
+echo Logger::$log_count;
 ?>
