@@ -1,0 +1,32 @@
+<?php
+class File{
+    public $name, $size;
+
+    function __construct($name, $size){
+        $this->name= $name;
+        $this->size= $size;
+    }
+
+    
+    public static function calculateTotalSize($files)
+    {
+        $totalSize = 0;
+
+        foreach ($files as $f) {
+            if ($f instanceof File) {
+                $totalSize += $f->size;
+            }
+        }
+
+        return $totalSize;
+    }
+}
+
+$file1 = new File("Demo2.txt", 1200);
+$file2 = new File("Demo2.txt", 2300);
+$file3 = new File("Demo3.txt", 1400);
+
+$files = [$file1, $file2, $file3];
+echo "Total Size : ".File::calculateTotalSize($files);
+
+?>
