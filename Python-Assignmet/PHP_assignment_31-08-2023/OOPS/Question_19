@@ -1,0 +1,35 @@
+<?php
+class Validation {
+    public static function validate_email($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+    public static function validate_password($pass) {
+        return strlen($pass) >= 8;
+    }
+    public static function validate_field($fi) {
+        return !empty($fi);
+    }
+}
+
+$email = "xyz@gmail.com";
+$password = "password";
+$field = "";
+
+if (Validation::validateEmail($email)) {
+    echo "Email is valid.</br>";
+} else {
+    echo "Email is invalid.</br>";
+}
+
+if (Validation::validatePassword($password)) {
+    echo "Password is valid.</br>";
+} else {
+    echo "Password is invalid.v";
+}
+
+if (Validation::validateField($field)) {
+    echo "Field is valid.</br>";
+} else {
+    echo "Field is invalid.</br>";
+}
+?>
