@@ -1,0 +1,122 @@
+<?php
+
+#1st question
+setcookie("Username","Gulnara Serik",time()+3600);
+
+#2nd question
+echo "<br>".$_COOKIE["Username"];
+
+#3rd question
+setcookie("Username","",time()-3600);
+
+#4th question
+session_start();
+$_SESSION['userid'] = 10020;
+echo "Session variable 'userid' has been set with the value 10020.";
+
+
+#5th question
+session_start();
+if (isset($_SESSION['userid'])) {
+    $userid = $_SESSION['userid'];
+    echo "Value of session variable 'userid': " . $userid;
+} else {
+    echo "Session variable 'userid' not found.";
+}
+
+#6th question
+$_SESSION=[];
+session_destroy();
+
+#7th question
+$cookieName = 'username';
+$cookieValue = 'mera_Cookie_value';
+$expirationTime = time() + 3600; // current time + 1 hour
+$secureOnly = true; // Set the cookie to be transmitted only over HTTPS
+
+setcookie($cookieName, $cookieValue, $expirationTime, "/", "", $secureOnly, true);
+
+echo "Secure cookie named 'username' has been set.";
+
+#8th question
+setcookie("visited","yes");
+if(isset($_COOKIE["visited"])){
+    echo "<br>This cookie is set ".$_COOKIE["visited"];
+}else{
+    echo "Cookie is not set";
+}
+
+#9th question
+session_start();
+if(isset($_SESSION["preferences"])){
+    $_SESSION["preferences"]=array("name"=>"Ram","id"=>"2020","sal"=>"20000");
+}
+
+#10th question
+if(isset($_SESSION["preferences"])){
+    $data = $_SESSION["preferences"];
+    foreach ($data as $key => $value) {
+        echo $key . ": " . $value . "</br>";
+    }
+}
+
+#11th question
+$timeout = 1800;
+$lasttime = $_SESSION["LAST_ACTIVITY"];
+$currenttime = time();
+$differencetime = $currenttime - $lasttime;
+
+if($differencetime>$timeout){
+    session_unset();
+    session_destroy();
+    echo "Session is dead";
+}else{
+    echo "Session still active";
+}
+
+
+#13th question
+session_save_path('/Applications/XAMPP/xamppfiles/htdocs/jyoti/cookie_Assignment');
+session_start();
+
+$maxSessions = 3; 
+
+if (!isset($_SESSION['session_count'])) {
+    $_SESSION['session_count'] = 1;
+} else {
+    $_SESSION['session_count']++;
+
+    if ($_SESSION['session_count'] > $maxSessions) {
+        session_unset();
+        session_destroy();
+        echo "Maximum session limit exceeded. Please log in again.";
+        exit;
+    }
+}
+echo "Session active. Session count: " . $_SESSION['session_count'];
+
+
+#14th question
+session_regenerate_id(true);
+
+
+#15th question
+session_save_path('/Applications/XAMPP/xamppfiles/htdocs/jyoti/cookie_Assignment');
+session_start();
+
+if (isset($_SESSION['last_access_time'])) {
+    $lastAccessTime = $_SESSION['last_access_time'];
+    echo "Last access time: " . date('Y-m-d H:i:s', $lastAccessTime);
+    $_SESSION['last_access_time'] = time(); 
+} else {
+    $_SESSION['last_access_time'] = time();
+    echo "Session started. First access.";
+}
+
+
+#16th question
+setcookie("NewCookie", "myvalue1", time() + 3600, "/");
+$_SESSION["NewCookie"] = "different value_session";
+
+
+?>
