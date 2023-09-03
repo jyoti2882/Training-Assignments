@@ -1,0 +1,23 @@
+<?php
+class Math{
+
+    public static function add($a,$b)
+    {
+        return $a+$b;
+    }
+    public static function sub($a,$b)
+    {
+        return $a-$b;
+    }
+    public static function multiply($a,$b)
+    {
+        return $a*$b;
+    }
+}
+
+echo Math::add(134,98298)."<br/>";
+
+echo Math::sub(456,7)."<br/>";
+
+echo Math::multiply(21,2)."<br/>";
+?>
