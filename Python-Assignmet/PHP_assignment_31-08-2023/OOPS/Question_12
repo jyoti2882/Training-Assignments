@@ -1,0 +1,27 @@
+<?php
+
+interface comparable{
+    public function compare();
+}
+
+class product implements comparable{
+    public $name, $price;
+    public function __construct($name, $price){
+        $this->name = $name;
+        $this->price = $price;
+    }
+    public function compare($otherproduct){
+        if ($otherproduct->price > $this->price){
+            echo "Price of other is more";
+
+        }else{
+            echo "Our Price is more";
+        }
+    }
+}
+
+$p1= new product("Iron",500);
+$p2= new product("chair",310);
+$p1->compare($p2);
+
+?>
